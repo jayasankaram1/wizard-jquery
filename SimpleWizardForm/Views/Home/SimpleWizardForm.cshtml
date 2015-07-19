@@ -1,0 +1,85 @@
+﻿@model SimpleWizardForm.Models.SimpleWizardFormModel
+@section Head
+{
+    <link href="~/Content/SimpleWizardForm.css" rel="stylesheet" />
+}
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/SimpleWizardForm.js"></script>
+}
+<h2>Simple Wizard Form</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend></legend>
+        <div class="wizard-step">
+            <h4>Personal Details</h4>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName)
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName)
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.HasTurned18)
+                    @Html.CheckBoxFor(m => m.HasTurned18)
+                    @Html.ValidationMessageFor(m => m.HasTurned18)
+                </li>
+            </ol>
+        </div>
+        <div class="wizard-step">
+            <h4>Address</h4>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Address)
+                    @Html.TextBoxFor(m => m.Address)
+                    @Html.ValidationMessageFor(m => m.Address)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.PostalCode)
+                    @Html.TextBoxFor(m => m.PostalCode)
+                    @Html.ValidationMessageFor(m => m.PostalCode)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.City)
+                    @Html.TextBoxFor(m => m.City)
+                    @Html.ValidationMessageFor(m => m.City)
+                </li>
+            </ol>
+        </div>
+        <div class="wizard-step">
+            <h4>Contact Details</h4>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone)
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Mobile)
+                    @Html.TextBoxFor(m => m.Mobile)
+                    @Html.ValidationMessageFor(m => m.Mobile)
+                </li>
+            </ol>
+        </div>
+        <div class="wizard-step wizard-confirmation">
+            <h4>Confirm</h4>
+            <div id="field-summary"></div>
+            <div id="validation-summary">
+                <span>Please correct the following errors;</span>
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+        <div class="wizard-nav">
+            <input type="button" id="wizard-prev" value="<< Previous" />
+            <input type="button" id="wizard-next" value="Next >>" />
+            <input type="button" id="wizard-submit" value="Submit" />
+        </div>
+    </fieldset>
+}
